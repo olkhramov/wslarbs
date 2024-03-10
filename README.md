@@ -1,2 +1,46 @@
 # wslarbs
 WSL Auto Rice Bootstrap scripts
+
+## What is this?
+
+This is a set of scripts that will automatically setup a WSL with all the programs needed. It works with Fedora & Ubuntu.
+
+## How to use it?
+
+1. Clone this repository
+2. Optional: modify the list of programs in the `programs` file
+3. Run the `install.sh` script
+4. Use the WSL
+
+## Annex: Before you start
+
+You need to have WSL installed. If you don't have it, you can install it by following the instructions [here](https://docs.microsoft.com/en-us/windows/wsl/install-win10).
+
+TL;DR: Open PowerShell as Administrator and run:
+
+```powershell
+dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+```
+
+Then install wsl itself:
+
+```powershell
+wsl --install
+```
+
+Set WSL 2 as the default version:
+
+```powershell
+wsl --set-default-version 2
+```
+
+Then select a distro:
+```powershell
+wsl --list --online
+```
+
+And install it:
+```powershell
+wsl --install -d <distro>
+```
