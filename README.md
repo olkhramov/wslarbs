@@ -23,6 +23,10 @@ chmod +x change_dns.sh
 ./change_dns.sh
 ```
 
+## CA certificates
+
+Your organization may have its own CA certificates. You can add them to the WSL by putting them in the `ca-certificates` directory. The `install.sh` script will automatically copy them to the right place. Just make sure the files are in the right format (`.crt`).
+
 ## Annex: Before you start
 
 You need to have WSL installed. If you don't have it, you can install it by following the instructions [here](https://docs.microsoft.com/en-us/windows/wsl/install-win10).
