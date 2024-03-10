@@ -12,6 +12,17 @@ This is a set of scripts that will automatically setup a WSL with all the progra
 3. Run the `install.sh` script
 4. Use the WSL
 
+## DNS issues
+
+If you have DNS issues, you can try to change the DNS server in the `/etc/resolv.conf` file. 
+You can find script here that would do that for you, just specify DNS servers you want in `custom_dns_servers.txt` file.
+Then:
+
+```bash
+chmod +x change_dns.sh
+./change_dns.sh
+```
+
 ## Annex: Before you start
 
 You need to have WSL installed. If you don't have it, you can install it by following the instructions [here](https://docs.microsoft.com/en-us/windows/wsl/install-win10).
