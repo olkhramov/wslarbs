@@ -33,6 +33,23 @@ done < "$CUSTOM_DNS_FILE"
 echo "$RESOLV_CONF has been updated with custom DNS servers."
 
 
-# Apply WSL configuration changes (requires restart of WSL)
-echo "WSL needs to be restarted to apply network changes. Restarting..."
-wsl.exe --shutdown
+# Function to prompt user for Y/N answer
+ask_restart_wsl() {
+    while true; do
+        read -p "Do you want to restart WSL now? (y/n): " yn
+        case $yn in
+            [Yy]* )
+                echo "Restarting WSL..."
+                wsl.exe --shutdown
+                echo "WSL has been restarted. Please reopen your WSL terminal."
+                exit;;
+            [Nn]* )
+                echo "WSL will not be restarted. Remember to restart it manually if needed."
+                exit;;
+            * ) echo "Please answer yes (y) or no (n).";;
+        esac
+    done
+}
+
+# Call the function
+ask_restart_wsl
