@@ -34,23 +34,20 @@ else
     echo "$PROGRAMS_CSV does not exist. Skipping program installations from CSV."
 fi
 
-# Function to install Docker
-install_docker() {
-    echo "Installing Docker..."
+# Function to install Podman
+install_podman() {
+    echo "Installing Podman..."
     if [ "$DISTRO" == "ubuntu" ]; then
         sudo $PKG_INSTALL apt-transport-https ca-certificates curl software-properties-common
-        curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-        sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+        curl -fsSL https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_$(lsb_release -rs)/Release.key | sudo gpg --dearmor -o /usr/share/keyrings/devel_kubic_libcontainers_stable.gpg
+        echo "deb [signed-by=/usr/share/keyrings/devel_kubic_libcontainers_stable.gpg] https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_$(lsb_release -rs)/ /" | sudo tee /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list > /dev/null
         sudo $PKG_UPDATE
-        sudo $PKG_INSTALL docker-ce docker-ce-cli containerd.io
+        sudo $PKG_INSTALL podman
     elif [ "$DISTRO" == "fedora" ]; then
         sudo dnf -y install dnf-plugins-core
-        sudo dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
-        sudo dnf install -y docker-ce docker-ce-cli containerd.io
+        sudo dnf config-manager --add-repo https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Fedora_$(rpm -E %fedora)/devel:kubic:libcontainers:stable.repo
+        sudo dnf install -y podman
     fi
-    sudo systemctl start docker
-    sudo systemctl enable docker
-    sudo usermod -aG docker $USER
 }
 
 # Function to install terraform

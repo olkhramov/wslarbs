@@ -51,11 +51,13 @@ wsl --set-default-version 2
 ```
 
 Then select a distro:
+
 ```powershell
 wsl --list --online
 ```
 
 And install it:
+
 ```powershell
 wsl --install -d <distro>
 ```
