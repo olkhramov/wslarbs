@@ -50,6 +50,8 @@ Set WSL 2 as the default version:
 wsl --set-default-version 2
 ```
 
+> This is where you probably need to restart your PC
+
 Then select a distro:
 
 ```powershell
