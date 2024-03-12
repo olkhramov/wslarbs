@@ -1,5 +1,5 @@
-# wslarbs
-WSL Auto Rice Bootstrap scripts
+# WSLarbs
+WSL Auto Rice Bootstrap Scripts
 
 ## What is this?
 
