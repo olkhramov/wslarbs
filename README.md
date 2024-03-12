@@ -12,6 +12,14 @@ This is a set of scripts that will automatically setup a WSL with all the progra
 3. Run the `install.sh` script
 4. Use the WSL
 
+## Import CA certificates
+
+Your organization may have its own CA certificates. You can add them to the WSL by putting them in the `ca-certificates` directory. The `install.sh` script will automatically copy them to the right place. Just make sure the files are in the right format (`.crt`).
+```
+chmod +x change_dns.sh
+./change_dns.sh
+```
+
 ## DNS issues
 
 If you have DNS issues, you can try to change the DNS server in the `/etc/resolv.conf` file. 
@@ -22,10 +30,6 @@ Then:
 chmod +x change_dns.sh
 ./change_dns.sh
 ```
-
-## CA certificates
-
-Your organization may have its own CA certificates. You can add them to the WSL by putting them in the `ca-certificates` directory. The `install.sh` script will automatically copy them to the right place. Just make sure the files are in the right format (`.crt`).
 
 ## Annex: Before you start
 
